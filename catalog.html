@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог услуг | Luxe Beauty</title>
+    <!-- Базовые стили (сброс, шрифты, шапка) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Стили конкретно для каталога -->
+    <link rel="stylesheet" href="catalog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="catalog-page">
+
+    <header class="header">
+        <img src="./img/nick.style.odessa.logo.png" alt="Nick Style" class="logo-img">
+        
+        <button class="burger-btn" id="burgerBtn">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <nav class="nav-menu" id="navMenu">
+        <button class="close-btn" id="closeBtn">✕</button>
+        <a href="index.html">На главную</a>
+    </nav>
+
+    <main class="catalog-main">
+        <h1 class="page-title hidden">Наши услуги</h1>
+
+        <nav class="sticky-nav">
+            <a href="#manicure">Маникюр</a>
+            <a href="#pedicure">Педикюр</a>
+            <a href="#extra">Дополнительно</a>
+        </nav>
+
+        <!-- Категория: МАНИКЮР -->
+        <section id="manicure" class="catalog-category">
+            <h2 class="category-title hidden">Маникюр</h2>
+            <div class="catalog-grid">
+                
+                <!-- Карточка 1 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Маникюр\ Комбинированный.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Маникюр Комбинированный</h3>
+                        <p class="card-desc">Аккуратная обработка кутикулы, придание идеальной формы и полировка ногтевой пластины.</p>
+                        <div class="card-price">350 грн</div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-1">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Маникюр\ с\ покрытием.webp');"></div>
+                    <div class="card-content">
+                        <h3>Маникюр с покрытием</h3>
+                        <p class="card-desc">Полный комплекс с нанесением премиального и стойкого гель-лака выбранного оттенка.</p>
+                        <div class="card-price">От 500 грн</div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-2">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Наращивание\ на\ верхние\ формы.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Наращивание на верхние формы</h3>
+                        <p class="card-desc">Моделирование идеальной архитектуры и длины без утяжеления родного ногтя.</p>
+                        <div class="card-price">От 600 грн</div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-3">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="catalog-divider hidden">
+
+        <!-- Категория: ПЕДИКЮР -->
+        <section id="pedicure" class="catalog-category">
+            <h2 class="category-title hidden">Педикюр</h2>
+            <div class="catalog-grid">
+                
+                <!-- Карточка 4 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Педикюр\ полный\ с\ покрытием.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Педикюр полный с покрытием</h3>
+                        <p class="card-desc">Комплексная смарт-обработка стоп и пальчиков плюс покрытие гель-лаком.</p>
+                        <div class="card-price">600 грн</div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-4">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 5 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Педикюр\ полный\ без\ покрытия.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Педикюр полный без покрытия</h3>
+                        <p class="card-desc">Глубокий гигиенический уход за кожей стоп и пальцами для максимального здоровья ног.</p>
+                        <div class="card-price">500 грн</div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-5">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 6 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Педикюр\ только\ пальчики.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Педикюр только пальчики</h3>
+                        <p class="card-desc">Эстетичная обработка пальцев ног с последующим нанесением стойкого покрытия.</p>
+                        <div class="card-price">500 грн</div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-6">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="catalog-divider hidden">
+
+        <!-- Категория: ДОПОЛНИТЕЛЬНО -->
+        <section id="extra" class="catalog-category">
+            <h2 class="category-title hidden">Дополнительно</h2>
+            <div class="catalog-grid">
+                
+                <!-- Карточка 7 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Снятие\ без\ покрытия.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Снятие без покрытия</h3>
+                        <p class="card-desc">Бережное и безопасное снятие старого материала без повреждения пластины.</p>
+                        <div class="card-price">100 грн</div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-7">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 8 -->
+                <div class="product-card hidden">
+                    <div class="card-image" style="background-image: url('./img/Ремонт.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Ремонт</h3>
+                        <p class="card-desc">Восстановление правильной архитектуры надломленного или треснувшего ногтя.</p>
+                        <div class="card-price">Бесплатно <span style="font-size: 0.8rem; font-family: 'Montserrat', sans-serif;">(1-2 ногтя)</span></div>
+                        <div class="card-actions">
+                            <button class="btn-outline" data-target="detail-8">Подробнее</button>
+                            <button class="btn-solid">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================================================
+                МОДАЛЬНОЕ ОКНО "ПОДРОБНЕЕ"
+    =================================================== -->
+
+        <div id="serviceModal" class="service-modal">
+            <div class="service-modal-content">
+                <button id="closeServiceModal" class="service-modal-close">
+                    &times;
+                </button>
+                <div id="serviceModalBody">
+                </div>
+            </div>
+        </div
+
+    <div class="order-overlay" id="orderOverlay"></div>
+
+    <div class="order-drawer" id="orderDrawer">
+        <button class="drawer-close" id="closeDrawer">&times;</button>
+        
+        <div class="drawer-header">
+            <h3>Оформление заказа</h3>
+            <p>Оставьте ваши контакты, и мы свяжемся с вами для подтверждения ордера.</p>
+        </div>
+
+        <form class="order-form" id="orderForm">
+            <div class="input-group">
+                <label for="clientName">Ваше имя</label>
+                <input type="text" id="clientName" placeholder="Введите ваше имя" required>
+            </div>
+
+            <div class="input-group">
+                <label for="clientPhone">Номер телефона</label>
+                <input type="tel" id="clientPhone" placeholder="+38 (095) 456-78-90" required>
+            </div>
+
+            <button type="submit" class="btn-solid submit-order-btn">Подтвердить заказ</button>
+        </form>
+    </div>
+
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <button class="success-close" id="closeSuccess">&times;</button>
+            
+            <div class="success-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--color-beige)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            
+            <h3>Заказ успешно создан</h3>
+            <p>Наш администратор уже обрабатывает ваш ордер и свяжется с вами в течение <b>10 минут</b>.</p>
+            
+            <button class="btn-solid close-success-btn" id="closeSuccessBtn">Отлично</button>
+        </div>
+    </div>
+
+    <div class="lux-widget" id="luxWidget">
+        <div class="lux-menu">
+            <button id="luxAiBtn">🤖 Чат с AI</button>
+            <a href="tel:+380000000000">📞 Позвонить</a>
+        </div>
+        <button class="lux-trigger" id="luxTrigger">ЧАТ</button>
+    </div>
+
+    <div class="lux-box" id="luxBox">
+        <div class="lux-header">
+            <div><strong>LUXE BEAUTY Assistant</strong><br><small>Онлайн</small></div>
+            <button id="luxClose">✕</button>
+        </div>
+        <div class="lux-msgs" id="luxMsgs">
+            <div class="msg ai">Приветствую. Помогу сориентироваться по каталогу. Что вас интересует?</div>
+        </div>
+        <div class="lux-input-zone">
+            <input type="text" id="luxInp" placeholder="Напишите сообщение..." autocomplete="off">
+            <button id="luxSend">➔</button>
+        </div>
+    </div>
+
+    <!-- Подвал (Footer) -->
+    <footer id="contacts" class="footer">
+        <div class="footer-content">
+            <div class="footer-col hidden">
+                <div class="logo">LUXE<span>BEAUTY</span></div>
+                <p class="footer-desc">Премиальное пространство вашей красоты и спокойствия.</p>
+            </div>
+            
+            <div class="footer-col hidden">
+                <h4>Контакты</h4>
+                <p><a href="tel:+380000000000" class="footer-link">+38 (095) 456-78-90</a></p>
+                <p class="address">г. Одесса, ул. Ицхака Рабина 53</p> 
+            </div>
+
+            <div class="footer-col hidden">
+                <h4>Режим работы</h4>
+                <p>Пн-Вс: 10:00 - 20:00</p>
+                <div class="social-links">
+                    <!-- Заглушки под соцсети, потом вставишь иконки SVG -->
+                    <a href="#">Instagram</a>
+                    <a href="https://t.me/your_sunshin">Telegram</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Luxe Beauty. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="catalog.js"></script>
+</body>
+</html>

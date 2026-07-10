@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Beauty | Салон красоты</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключаем дорогие шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header class="header">
+        <img src="./img/nick.style.odessa.logo.png" alt="Nick Style" class="logo-img">
+        
+        <button class="burger-btn" id="burgerBtn">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- Меню, которое выезжает -->
+    <nav class="nav-menu" id="navMenu">
+        <button class="close-btn" id="closeBtn">✕</button>
+        <a href="#services">Услуги</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+
+    <!-- Главный экран -->
+    <section class="hero hidden">
+        <div class="hero-content">
+            <h1>Искусство твоей красоты</h1>
+            <p>Премиальный уход за ногтями в атмосфере абсолютного релакса. Доверьтесь профессионалам.</p>
+            <a href="#services" class="btn-primary">Смотреть услуги</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-item hidden">
+                <div class="feature-icon">✦</div>
+                <h3>Безупречная безопасность</h3>
+                <p>Медицинская стерилизация инструментов. Мы вскрываем крафт-пакеты исключительно при вас.</p>
+            </div>
+            <div class="feature-item hidden">
+                <div class="feature-icon">✦</div>
+                <h3>Премиум материалы</h3>
+                <p>Используем только проверенные бренды, которые сохраняют здоровье вашей ногтевой пластины.</p>
+            </div>
+            <div class="feature-item hidden">
+                <div class="feature-icon">✦</div>
+                <h3>Приватный комфорт</h3>
+                <p>Ваше время для релакса. Удобные кресла, авторский кофе и атмосфера полного спокойствия.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Атмосфера (Галерея) -->
+    <section class="atmosphere">
+        <h2 class="section-title hidden">Почувствуйте атмосферу</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item hidden" style="background-image: url('img/marigolds1.jpg');"></div>
+            <div class="gallery-item hidden" style="background-image: url('img/marigolds2.jpg');"></div>
+            <div class="gallery-item hidden" style="background-image: url('img/marigolds3.jpg');"></div>
+        </div>
+    </section>
+
+    <section class="philosophy hidden">
+        <div class="philosophy-content">
+            <h2 class="section-title">Больше, чем маникюр</h2>
+            <p>Мы создали пространство, где каждая деталь работает на ваше спокойствие. Забудьте о суете мегаполиса — доверьтесь нашим мастерам и позвольте себе роскошь идеального ухода.</p>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2 class="section-title hidden">Говорят о нас</h2>
+        <div class="reviews-grid">
+            
+            <div class="review-card hidden">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">«Идеальный блик и потрясающая стойкость. Хожу с покрытием уже месяц, ни одного скола. Настоящие профессионалы и очень красивый салон!»</p>
+                <span class="author">— Алина В.</span>
+            </div>
+
+            <div class="review-card hidden">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">«Атмосфера — просто космос. Отдохнула душой, пока делали педикюр. Плюс вкусный кофе и очень удобные кресла. Мой рекомендасьон.»</p>
+                <span class="author">— Екатерина С.</span>
+            </div>
+
+            <div class="review-card hidden">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">«Долго искала своего мастера и наконец нашла. Стерильность на высшем уровне, крафт-пакет открыли при мне. Форма ногтей — огонь!»</p>
+                <span class="author">— Мария Д.</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Топ-3 услуги -->
+    <section id="services" class="top-services">
+        <h2 class="section-title hidden">Часто выбирают</h2>
+        
+        <div class="services-grid">
+            <!-- Услуга 1 -->
+            <div class="service-card hidden">
+                <div class="card-info">
+                    <h3>Маникюр с покрытием</h3>
+                    <p class="desc">Безупречная форма и стойкое покрытие на ваш выбор.</p>
+                </div>
+                <div class="card-action">
+                    <span class="price">От 500 грн</span>
+                </div>
+            </div>
+
+            <!-- Услуга 2 -->
+            <div class="service-card hidden">
+                <div class="card-info">
+                    <h3>Наращивание на верхние формы</h3>
+                    <p class="desc">Идеальная архитектура и длина без утяжеления.</p>
+                </div>
+                <div class="card-action">
+                    <span class="price">От 600 грн</span>
+                </div>
+            </div>
+
+            <!-- Услуга 3 -->
+            <div class="service-card hidden">
+                <div class="card-info">
+                    <h3>Педикюр полный с покрытием</h3>
+                    <p class="desc">Комплексный уход за стопами и пальчиками.</p>
+                </div>
+                <div class="card-action">
+                    <span class="price">600 грн</span>
+                </div>
+            </div>
+            <a href="./catalog.html" class="btn_learn_more">Узнать больше</a>
+        </div>
+    </section>
+
+    <!-- FAQ (Вопросы и ответы) -->
+    <section class="faq">
+        <h2 class="section-title hidden">Часто задаваемые вопросы</h2>
+        <div class="faq-container">
+            
+            <!-- 1 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Какой у вас адрес?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Ждем вас в нашем пространстве по адресу: ул. Ицхака Рабина, 53.</p>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Сколько стоит эта процедура?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Актуальную стоимость топовых позиций вы можете увидеть выше в блоке услуг. С полным и подробным прайсом можно будет ознакомиться в нашем каталоге.</p>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Сколько времени занимает процедура?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Мы работаем на качество, но ценим ваше время:<br>
+                    • Маникюр — от 1,5 до 2,5 часов<br>
+                    • Педикюр — около 1,5 часов<br>
+                    • Наращивание — от 2 часов</p>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Что входит в стоимость?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>У нас всё прозрачно: в стоимость маникюра уже включены покрытие и укрепление ногтевой пластины. Педикюр также выполняется сразу с покрытием. Никаких доплат за базу или топ.</p>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Можно ли прийти с ребенком?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, конечно. Мы рады гостям, главное, чтобы вам и вашему ребенку было комфортно во время проведения процедуры.</p>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Как можно оплатить: наличными или картой?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Оплачивайте так, как вам удобно в данный момент. Мы принимаем как наличные, так и прямые переводы.</p>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Есть ли предоплата?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Нет, мы доверяем нашим гостям. Никаких скрытых условий или обязательных предоплат при бронировании времени нет.</p>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Если я опоздаю, меня примете?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Мы понимаем, что в городе бывают пробки. Опоздание до 30 минут допустимо, но чтобы не сдвигать запись следующего гостя, в этом случае мы выполним качественное однотонное покрытие.</p>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="faq-item hidden">
+                <div class="faq-question">
+                    <span>Можно ли перенести или отменить запись?</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, планы могут меняться, и это абсолютно нормально. Вы можете отменить или перенести визит. Будем очень благодарны, если вы сообщите нам об этом заранее.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="lux-widget" id="luxWidget">
+        <div class="lux-menu">
+            <button id="luxAiBtn">🤖 Чат с AI</button>
+            <a href="tel:+380000000000">📞 Позвонить</a>
+        </div>
+        <button class="lux-trigger" id="luxTrigger">ЧАТ</button>
+    </div>
+
+    <div class="lux-box" id="luxBox">
+        <div class="lux-header">
+            <div><strong>LUXE BEAUTY Assistant</strong><br><small>Онлайн</small></div>
+            <button id="luxClose">✕</button>
+        </div>
+        <div class="lux-msgs" id="luxMsgs">
+            <div class="msg ai">Приветствую. Помогу сориентироваться по каталогу. Что вас интересует?</div>
+        </div>
+        <div class="lux-input-zone">
+            <input type="text" id="luxInp" placeholder="Напишите сообщение..." autocomplete="off">
+            <button id="luxSend">➔</button>
+        </div>
+    </div>
+
+    <!-- Подвал (Footer) -->
+    <footer id="contacts" class="footer">
+        <div class="footer-content">
+            <div class="footer-col hidden">
+                <div class="logo">NICK.<span>STYLE</span></div>
+                <p class="footer-desc">Премиальное пространство вашей красоты и спокойствия.</p>
+            </div>
+            
+            <div class="footer-col hidden">
+                <h4>Контакты</h4>
+                <p><a href="tel:+380000000000" class="footer-link">+38 (095) 456-78-90</a></p>
+                <p class="address">г. Одесса, ул. Ицхака Рабина 53</p> 
+            </div>
+
+            <div class="footer-col hidden">
+                <h4>Режим работы</h4>
+                <p>Пн-Вс: 10:00 - 20:00</p>
+                <div class="social-links">
+                    <!-- Заглушки под соцсети, потом вставишь иконки SVG -->
+                    <a href="#">Instagram</a>
+                    <a href="https://t.me/your_sunshin">Telegram</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 NICK.STYLE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
