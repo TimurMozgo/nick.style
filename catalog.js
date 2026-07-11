@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Находим ВСЕ кнопки "Оформить заказ" в карточках актива
     const orderButtons = document.querySelectorAll('.btn-solid:not(.submit-order-btn)');
 
+    console.log(orderDrawer);
+    console.log(orderOverlay);
+
     // Функция открытия плашки ввода данных
     const openDrawer = (e) => {
         e.preventDefault();
@@ -84,50 +87,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. ОТПРАВКА ОРДЕРА НА ВЕБХУК В n8n (Закрытие сделки)
     // ==========================================================================
     orderForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Забираем данные из инпутов
-        const name = document.getElementById('clientName').value;
-        const phone = document.getElementById('clientPhone').value;
+            e.preventDefault();
+            
+            // Забираем данные из инпутов
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
 
-        // Твой рабочий эндпоинт в n8n
-        const webhookUrl = 'https://tiktiok.xyz/webhook/98ccb536-4741-45d6-bc43-f40f49292e9b';
+            // Твой рабочий эндпоинт в n8n
+            const webhookUrl = 'https://tiktiok.xyz/webhook/98ccb536-4741-45d6-bc43-f40f49292e9b';
 
-        // Формируем аккуратный JSON-пакет для Аудитора
-        const orderData = {
-            name: name,
-            phone: phone,
-            source: 'Сайт Салона (Каталог)',
-            date: new Date().toLocaleString('ru-RU')
-        };
+            // Формируем аккуратный JSON-пакет для Аудитора
+            const orderData = {
+                name: name,
+                phone: phone,
+                source: 'Сайт Салона (Каталог)',
+                date: new Date().toLocaleString('ru-RU')
+            };
 
-        // ПРЕМИУМ UX: Моментально закрываем ввод и выкатываем плашку успеха.
-        // Клиент не должен ждать ответа от сервера, для него все должно летать.
-        closeDrawer();
-        successModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Фиксируем экран под поп-апом успеха
-        orderForm.reset(); // Очищаем форму под следующий ордер
+            // ПРЕМИУМ UX: Моментально закрываем ввод и выкатываем плашку успеха.
+            // Клиент не должен ждать ответа от сервера, для него все должно летать.
+            closeDrawer();
+            successModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Фиксируем экран под поп-апом успеха
+            orderForm.reset(); // Очищаем форму под следующий ордер
 
-        // Запускаем скрытую транзакцию в сеть
-        fetch(webhookUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(orderData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                console.error('Ордер ушел с ошибкой сети, проверяй статус шлюза n8n');
-            } else {
-                console.log('Данные успешно пойманы воркфлоу n8n и переданы админу.');
-            }
-        })
-        .catch(error => {
-            console.error('Критическая ошибка при отправке запроса:', error);
+            // Запускаем скрытую транзакцию в сеть
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Ордер ушел с ошибкой сети, проверяй статус шлюза n8n');
+                } else {
+                    console.log('Данные успешно пойманы воркфлоу n8n и переданы админу.');
+                }
+            })
+            .catch(error => {
+                console.error('Критическая ошибка при отправке запроса:', error);
+            });
         });
     });
-});
 
 const burgerBtn = document.getElementById('burgerBtn');
 const navMenu = document.getElementById('navMenu');
