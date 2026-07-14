@@ -683,7 +683,7 @@ html {
 }
 
 .success-content p b {
-    color: var(--color-beige); /* Выделяем 10 минут бежевым */
+    color: var(--color-beige);
     font-weight: 500;
 }
 
