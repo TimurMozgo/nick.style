@@ -46,9 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Функция открытия плашки ввода данных
     const openDrawer = (e) => {
         e.preventDefault();
+
+        // Находим карточку, по кнопке которой кликнули
+        const card = e.currentTarget.closest('.product-card');
+
+        if (card) {
+            selectedService = card.querySelector('h3').textContent.trim();
+        }
+
         orderDrawer.classList.add('active');
         orderOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Запрещаем скролл сайта под плашкой
+        document.body.style.overflow = 'hidden';
     };
 
     // Функция закрытия плашки ввода данных
@@ -100,12 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const orderData = {
                 name: name,
                 phone: phone,
+                service: selectedService,
                 source: 'Сайт Салона (Каталог)',
                 date: new Date().toLocaleString('ru-RU')
             };
 
-            // ПРЕМИУМ UX: Моментально закрываем ввод и выкатываем плашку успеха.
-            // Клиент не должен ждать ответа от сервера, для него все должно летать.
+
             closeDrawer();
             successModal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Фиксируем экран под поп-апом успеха

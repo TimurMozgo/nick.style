@@ -492,31 +492,245 @@ h1, h2, h3, .logo {
     background-color: var(--color-beige);
 }
 
-.lux-widget { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 9999; }
-    .lux-trigger { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #bd9f73, #a68758); border: none; cursor: pointer; color: #0f0f11; font-size: 24px; box-shadow: 0 8px 24px rgba(166,135,88,0.3); transition: 0.3s; }
-    .lux-widget.active .lux-trigger { transform: rotate(135deg); }
-    
-    .lux-menu { display: flex; flex-direction: column; gap: 8px; opacity: 0; transform: translateY(10px); pointer-events: none; transition: 0.3s; }
-    .lux-widget.active .lux-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .lux-menu button, .lux-menu a { background: rgba(25,25,30,0.9); backdrop-filter: blur(10px); border: 1px solid rgba(197,168,128,0.2); padding: 12px 20px; border-radius: 24px; color: #e4e4e7; font-size: 13px; cursor: pointer; text-decoration: none; text-align: center; transition: 0.2s; }
-    .lux-menu button:hover, .lux-menu a:hover { border-color: #c5a880; transform: translateX(-4px); }
+/* Общий сброс для виджета, чтобы паддинги не сжимали элементы */
+.lux-widget, .lux-widget * {
+    box-sizing: border-box;
+}
 
-    .lux-box { position: fixed; bottom: 110px; right: 30px; width: 360px; height: 480px; background: rgba(25,25,30,0.9); backdrop-filter: blur(20px); border: 1px solid rgba(197,168,128,0.2); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: hidden; z-index: 10000; opacity: 0; transform: translateY(20px); pointer-events: none; transition: 0.3s; }
-    .lux-box.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.lux-widget { 
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+    gap: 16px; /* Чуть увеличили зазор */
+    z-index: 9999; 
+}
+
+/* Кнопка триггера с золотой пульсацией */
+.lux-trigger { 
+    width: 60px; /* Слегка увеличили для солидности */
+    height: 60px; 
+    border-radius: 50%; 
+    background: linear-gradient(135deg, #bd9f73, #a68758); 
+    border: none; 
+    cursor: pointer; 
+    color: #ffffff; 
+    font-size: 24px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(166, 135, 88, 0.4); 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s; 
+}
+
+/* Пульсация работает ТОЛЬКО когда меню закрыто, чтобы не мешать вращению */
+.lux-widget:not(.active) .lux-trigger {
+    animation: lux-gold-pulse 2s infinite;
+}
+
+/* Вращение при активации */
+.lux-widget.active .lux-trigger { 
+    transform: rotate(135deg); 
+    box-shadow: 0 4px 12px rgba(166, 135, 88, 0.2);
+}
+
+/* Меню выбора действий */
+.lux-menu { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; /* Выравнивание по правому краю */
+    gap: 10px; 
+    opacity: 0; 
+    transform: translateY(15px); 
+    pointer-events: none; 
+    transition: all 0.3s ease; 
+}
+
+.lux-widget.active .lux-menu { 
+    opacity: 1; 
+    transform: translateY(0); 
+    pointer-events: auto; 
+}
+
+/* Кнопки в меню — больше не сжимаются */
+.lux-menu button, .lux-menu a { 
+    background: rgba(25, 25, 30, 0.95); /* Чуть плотнее фон для читаемости */
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(197, 168, 128, 0.25); 
+    padding: 12px 24px; /* Больше воздуха внутри */
+    border-radius: 30px; 
+    color: #e4e4e7; 
+    font-size: 14px; 
+    font-weight: 500;
+    cursor: pointer; 
+    text-decoration: none; 
+    text-align: center; 
+    white-space: nowrap; /* ЗАПРЕТ СЖАТИЯ И ПЕРЕНОСА ТЕКСТА */
+    transition: all 0.2s ease; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lux-menu button:hover, .lux-menu a:hover { 
+    border-color: #c5a880; 
+    color: #ffffff;
+    transform: translateX(-6px); /* Более выразительный сдвиг */
+}
+
+/* Окно чата с ИИ — просторное и адаптивное */
+.lux-box { 
+    position: fixed; 
+    bottom: 110px; 
+    right: 30px; 
+    width: 380px; /* Сделали шире, чтобы текст дышал */
+    max-width: calc(100vw - 60px); /* Чтобы не сжимало на мобилках */
+    height: 520px; /* Увеличили высоту для истории переписки */
+    background: rgba(25, 25, 30, 0.95); 
+    backdrop-filter: blur(20px); 
+    border: 1px solid rgba(197, 168, 128, 0.2); 
+    border-radius: 24px; 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    z-index: 10000; 
+    opacity: 0; 
+    transform: translateY(20px); 
+    pointer-events: none; 
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); 
+}
+
+.lux-box.open { 
+    opacity: 1; 
+    transform: translateY(0); 
+    pointer-events: auto; 
+}
+
+/* Шапка чата */
+.lux-header { 
+    padding: 16px 20px; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    font-size: 15px; 
+    font-weight: 600;
+}
+
+.lux-header small { 
+    color: #a1a1aa; 
+    font-size: 11px; 
+    display: block;
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+.lux-header button { 
+    background: none; 
+    border: none; 
+    color: #a1a1aa; 
+    cursor: pointer; 
+    font-size: 18px; 
+    transition: color 0.2s;
+}
+.lux-header button:hover {
+    color: #ffffff;
+}
+
+/* Сообщения в чате */
+.lux-msgs { 
+    flex: 1; 
+    padding: 20px; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    font-size: 14px; 
+    scroll-behavior: smooth;
+}
+
+.msg { 
+    max-width: 85%; 
+    padding: 12px 16px; 
+    border-radius: 18px; 
+    line-height: 1.5; 
+}
+
+.msg.ai { 
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.06); 
+    align-self: flex-start; 
+    border-top-left-radius: 4px; 
+    color: #e4e4e7; 
+}
+
+.msg.user { 
+    background: linear-gradient(135deg, #bd9f73, #a68758); 
+    color: #0f0f11; 
+    font-weight: 500; 
+    align-self: flex-end; 
+    border-top-right-radius: 4px; 
+    box-shadow: 0 4px 12px rgba(166, 135, 88, 0.2);
+}
+
+/* Зона ввода */
+.lux-input-zone { 
+    padding: 16px; 
+    background: rgba(15, 15, 17, 0.7); 
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex; 
+    gap: 10px; 
+    align-items: center;
+}
+
+.lux-input-zone input { 
+    flex: 1; 
+    background: rgba(255, 255, 255, 0.04); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 12px; 
+    color: #e4e4e7; 
+    padding: 10px 16px; 
+    font-size: 14px; 
+    outline: none; 
+    transition: all 0.2s;
+}
+
+.lux-input-zone input:focus { 
+    border-color: #c5a880; 
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.lux-input-zone button { 
+    background: none; 
+    border: none; 
+    color: #c5a880; 
+    cursor: pointer; 
+    font-size: 18px; 
+    transition: transform 0.2s, color 0.2s; 
+}
+.lux-input-zone button:hover {
+    color: #bd9f73;
+    transform: scale(1.1);
+}
+
+/* АНИМАЦИЯ ЗОЛОТОЙ ПУЛЬСАЦИИ С ТОЧНЫМ ПОДБОРОМ ЦВЕТА КНОПКИ */
+@keyframes lux-gold-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(166, 135, 88, 0.6);
+    }
+    70% {
+        transform: scale(1.04); /* Легкий, мягкий вдох кнопки */
+        box-shadow: 0 0 0 16px rgba(166, 135, 88, 0); /* Волна расходится в прозрачность */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(166, 135, 88, 0);
+    }
+}
+
     
-    .lux-header { padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
-    .lux-header small { color: #a1a1aa; font-size: 11px; }
-    .lux-header button { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 16px; }
-    
-    .lux-msgs { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
-    .msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; line-height: 1.4; }
-    .msg.ai { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); align-self: flex-start; border-top-left-radius: 4px; color: #e4e4e7; }
-    .msg.user { background: linear-gradient(135deg, #bd9f73, #a68758); color: #0f0f11; font-weight: 500; align-self: flex-end; border-top-right-radius: 4px; }
-    
-    .lux-input-zone { padding: 12px 16px; background: rgba(15,15,17,0.5); display: flex; gap: 8px; }
-    .lux-input-zone input { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: #e4e4e7; padding: 8px 12px; font-size: 13px; outline: none; }
-    .lux-input-zone input:focus { border-color: #c5a880; }
-    .lux-input-zone button { background: none; border: none; color: #c5a880; cursor: pointer; font-size: 16px; }
 
 /* --- Подвал (Footer) --- */
 .footer {
